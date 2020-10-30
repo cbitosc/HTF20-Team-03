@@ -1,84 +1,332 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>The Casket- login</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" >
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
+<style>
+	* {
+		box-sizing: border-box;
+	}
+
+	body {
+		font-family: Arial, Helvetica, sans-serif;
+		background-color: #F1F76C;
+	}
+
+	.column {
+		width: 25%;
+		float: left;
+		padding: 50px 10px;
+	}
+
+	.row:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+
+
+
+	@media screen and (max-width:600px) {
+		.column {
+			width: 100%;
+			display: block;
+			margin-bottom: 20px;
+		}
+	}
+
+	.card {
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+		max-width: 300px;
+		margin: auto;
+		background-color: white;
+		text-align: center;
+		border-radius: 40px;
+		padding-bottom: 15px;
+	}
+
+	.title {
+		color: gray;
+		font-size: 18px;
+	}
+
+	button {
+		border: none;
+		padding: 8px;
+		display: inline-block;
+		color: white;
+		background-color: black;
+		cursor: pointer;
+		width: 70%;
+		border-radius: 20px;
+		font-size: 18px;
+		text-align: center;
+	}
+
+	a {
+		text-decoration: none;
+		font-size: 22px;
+		color: black;
+	}
+
+	a:hover,
+	button:hover {
+		opacity: 0.6;
+	}
+</style>
+
 <body>
-
-	<header id="header">
-		<div class="inner">
-			<a href="index.html" class="logo">
-			<nav id="nav">
-				<a href="/main">Home</a>
-				
-			</nav>
-			<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-		</div>
-	</header>
-<section id="banner" style="background-image: url({{ url_for('static', filename='images/bg.jpg') }})">
-		
-		<div class="inner">
-			<form action = "/after-login" enctype="multipart/form-data" method = "POST">
-				<div class="login">
-				<div class="login-screen">
-				<div class="app-title">
-				<h1>Login</h1>
-				</div>
-				<div class="login-form">
-				<div class="control-group">
-                    <div class="dropdown" style="background-color: antiquewhite;">
-                        Name<br>
-                        <select name="Name" style ="background-color:grey;">
-                            <option value="u1" class="dropdown-item" SELECTED>u1</option>
-                            <option value="Social" class="dropdown-item" SELECTED>u2</option>
-                            <option value="Science" class="dropdown-item" SELECTED>u3</option>
-                        </select>
-                    </div>
-                    <div class="dropdown">
-                        <select name="languages" class="btn btn-info dropdown-toggle" type="button"
-                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            <option value="English" class="dropdown-item" SELECTED>English</option>
-                            <option value="Telugu" class="dropdown-item" SELECTED>Telugu</option>
-                            <option value="Hindi" class="dropdown-item" SELECTED>Hindi</option>
-                        </select>
-                    </div>
-                    <div class="dropdown">
-                        <select name="Subjects" class="btn btn-info dropdown-toggle" type="button"
-                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            <option value="Maths" class="dropdown-item" SELECTED>Maths</option>
-                            <option value="Social" class="dropdown-item" SELECTED>Social</option>
-                            <option value="Science" class="dropdown-item" SELECTED>Science</option>
-                        </select>
-                    </div>
-                    <div class="dropdown">
-                        <select name="Location" class="btn btn-info dropdown-toggle" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <option value="l1" class="dropdown-item" SELECTED>L-1</option>
-                            <option value="l2" class="dropdown-item" SELECTED>L-2</option>
-                            <option value="l3" class="dropdown-item" SELECTED>L - 3</option>
-                        </select>
-                    </div>
+	<section class="tutor-cards">
+		<div class="row">
+            <div class="col-md-3">
+                <div class="dropdown">
+                    Name of Tutor:<br>
+                    <select name="Name" class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <option value="u1" class="dropdown-item" SELECTED>u1</option>
+                        <option value="Social" class="dropdown-item" SELECTED>u2</option>
+                        <option value="Science" class="dropdown-item" SELECTED>u3</option>
+                    </select>
                 </div>
-				
-				
-				<input type="submit" value="login" class="btn btn-primary btn-large btn-block">
-				
+            </div>
+            <div class="col-md-3">
+                <div class="dropdown">
+                    Language:<br>
+                <select name="languages" class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <option value="English" class="dropdown-item" SELECTED>English
+                    </option>
+                    <option value="Telugu" class="dropdown-item" SELECTED>Telugu
+                    </option>
+                    <option value="Hindi" class="dropdown-item" SELECTED>Hindi</option>
+                </select>
+                </div>
+            </div>
 
-				
-				</div>
-				</div>
-				</div>
-				</form>
+            <div class="col-md-3">
+                <div class="dropdown">
+                    Subject:<br>
+                    <select name="Subjects" class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <option value="Maths" class="dropdown-item" SELECTED>Maths</option>
+                        <option value="Social" class="dropdown-item" SELECTED>Social
+                        </option>
+                        <option value="Science" class="dropdown-item" SELECTED>Science
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="dropdown">
+                    Location:<br>
+                    <select name="Location" class="btn btn-danger dropdown-toggle" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <option value="l1" class="dropdown-item" SELECTED>L-1</option>
+                        <option value="l2" class="dropdown-item" SELECTED>L-2</option>
+                        <option value="l3" class="dropdown-item" SELECTED>L - 3</option>
+                    </select>
+                </div>
+            </div>
 
 		</div>
-	
-</section>
-&#123;% endif %&#125;
-&#123;% endblock %&#125;
-&#123;% endraw %&#125;
+		<div class="row">
+			<div class="column">
+				<div class="card">
+					<img src="1.jpg" style="width:150px;height:auto;padding-top:10px">
+					<h1>Json watson</h1>
+					<p class="title">CEO & Founder</p>
+					<p>Oxford university</p>
+
+					<p><button>Contact</button></p>
+				</div>
+			</div>
+
+			<div class="column">
+				<div class="card">
+					<img src="3.jpg" style="width:150px;height:auto;padding-top:10px">
+					<h1>Jon watson</h1>
+					<p class="title">CEO & Founder</p>
+					<p>Oxford university</p>
+
+					<p><button>Contact</button></p>
+				</div>
+			</div>
+
+			<div class="column">
+				<div class="card">
+					<img src="2.png" style="width:150px;height:auto;padding-top:10px">
+					<h1>Nick watson</h1>
+					<p class="title">CEO & Founder</p>
+					<p>Oxford university</p>
+
+					<p><button>Contact</button></p>
+				</div>
+			</div>
+
+			<div class="column">
+				<div class="card">
+					<img src="4.png" style="width:150px;height:auto;padding-top:10px">
+					<h1>Joy watson</h1>
+					<p class="title">CEO & Founder</p>
+					<p>Oxford university</p>
+
+					<p><button>Contact</button></p>
+				</div>
+            </div>
+            
+            <div class="column">
+				<div class="card">
+					<img src="1.jpg" style="width:150px;height:auto;padding-top:10px">
+					<h1>Json watson</h1>
+					<p class="title">CEO & Founder</p>
+					<p>Oxford university</p>
+
+					<p><button>Contact</button></p>
+				</div>
+			</div>
+
+			<div class="column">
+				<div class="card">
+					<img src="3.jpg" style="width:150px;height:auto;padding-top:10px">
+					<h1>Jon watson</h1>
+					<p class="title">CEO & Founder</p>
+					<p>Oxford university</p>
+
+					<p><button>Contact</button></p>
+				</div>
+			</div>
+
+			<div class="column">
+				<div class="card">
+					<img src="2.png" style="width:150px;height:auto;padding-top:10px">
+					<h1>Nick watson</h1>
+					<p class="title">CEO & Founder</p>
+					<p>Oxford university</p>
+
+					<p><button>Contact</button></p>
+				</div>
+			</div>
+
+			<div class="column">
+				<div class="card">
+					<img src="4.png" style="width:150px;height:auto;padding-top:10px">
+					<h1>Joy watson</h1>
+					<p class="title">CEO & Founder</p>
+					<p>Oxford university</p>
+
+					<p><button>Contact</button></p>
+				</div>
+			</div>
+		</div>
+	</section>
+
 </body>
+
 </html>
 
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <title>The Casket- login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <header id="header">
+        <div class="inner">
+            <a href="index.html" class="logo">
+                <nav id="nav">
+                    <a href="/main">Home</a>
+
+                </nav>
+                <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Find a Tutor</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav" styl>
+            <a class="nav-link active" href="/main">Home <span class="sr-only">(current)</span></a>
+          </div>
+        </div>
+      </nav>
+
+    <div class="container-fluid">
+        <div class="row" style="margin-top: 100px; height: 50%;">
+            <div class="col-md-3">
+                <div class="dropdown">
+                    Name of Tutor:<br>
+                    <select name="Name" class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <option value="u1" class="dropdown-item" SELECTED>u1</option>
+                        <option value="Social" class="dropdown-item" SELECTED>u2</option>
+                        <option value="Science" class="dropdown-item" SELECTED>u3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="dropdown">
+                    Language:<br>
+                <select name="languages" class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <option value="English" class="dropdown-item" SELECTED>English
+                    </option>
+                    <option value="Telugu" class="dropdown-item" SELECTED>Telugu
+                    </option>
+                    <option value="Hindi" class="dropdown-item" SELECTED>Hindi</option>
+                </select>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="dropdown">
+                    Subject:<br>
+                    <select name="Subjects" class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <option value="Maths" class="dropdown-item" SELECTED>Maths</option>
+                        <option value="Social" class="dropdown-item" SELECTED>Social
+                        </option>
+                        <option value="Science" class="dropdown-item" SELECTED>Science
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="dropdown">
+                    Location:<br>
+                    <select name="Location" class="btn btn-danger dropdown-toggle" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <option value="l1" class="dropdown-item" SELECTED>L-1</option>
+                        <option value="l2" class="dropdown-item" SELECTED>L-2</option>
+                        <option value="l3" class="dropdown-item" SELECTED>L - 3</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous">
+    </script>
+</body>
+
+</html> -->
