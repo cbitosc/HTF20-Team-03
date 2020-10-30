@@ -83,9 +83,7 @@ def after_login():
                 return render_template('login.html', Sentence="Wrong password")
             return render_template('register.html', Sentence="Please Register First")
     except:
-        return render_template('register.html',Sentence="Oops!! Give us a moment!!")
-		
-
+        return render_template('register.html',Sentence="Oops!! Give us a moment!!")	
 
 @app.route("/logout")
 def logout():
