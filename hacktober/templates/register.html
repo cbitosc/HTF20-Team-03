@@ -55,9 +55,10 @@
 				<div class="login">
 				<div class="login-screen">
 				<div class="app-title" style="text-align: center; padding: 5%; font-family: sans-serif;">
-				<h1>Login Here</h1>
+				<h1>Register Here</h1>
 			</div>
 			<div class="container">
+				<p style="color:red;">{{Sentence}}</p>
 				<div class="login-form">
 					<div class="form-row">
 				<div class="control-group col">
@@ -79,7 +80,7 @@
 				<div class="control-group">
 					<input type="password" class="login-field form-control" value=""  placeholder="password" name="password" size="5">
 						<label class="login-field-icon fui-user" for="login-name"></label></div>
-				<input type="submit" value="login" class="btn btn-default">
+				<input type="submit" value="Register" class="btn btn-default">
 
 
 				</div>
@@ -89,7 +90,7 @@
 				</form>
 			</div>
 			<div class="col-lg-6">
-				<img src="C:\Users\madan\OneDrive\Desktop\Hackathonn\HTF20-Team-03\hacktober\static\images\register.png" alt="just an image" style="height: 100%; width: 100%">
+				<img src="{{ url_for('static', filename='images/register.png') }}" alt="just an image" style="height: 100%; width: 100%">
 			</div>
 		</div>
 	</div>
