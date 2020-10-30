@@ -16,10 +16,16 @@ class User(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(80), unique=True)
 	password = db.Column(db.String(5000), unique=False)
+	language = db.Column(db.String(100), unique=False)
+	subject = db.Column(db.String(100), unique=False)
+	location = db.Column(db.String(100), unique=False)
 
-	def __init__(self, username, password):
+	def __init__(self, username, password, language, subject, location):
 		self.username = username
 		self.password = password
+		self.language = language
+		self.subject = subject
+		self.location = location
 
 @app.route('/register')
 def call_page_register_user():
