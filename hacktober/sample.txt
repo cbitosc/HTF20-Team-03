@@ -1,0 +1,220 @@
+import os
+import os.path
+from flask import Flask, request, redirect, url_for, render_template, session, send_from_directory, send_file, flash, abort, make_response
+from werkzeug.utils import secure_filename
+from sqlalchemy.orm import sessionmaker
+import DHECC
+import pickle
+import random
+from sqlalchemy import create_engine
+from sqlalchemy.orm import scoped_session,sessionmaker
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import text
+
+global my_private 
+my_private = 3296855840576710335977306677413500792974154621508589503092147326964553226041
+global my_public 
+my_public = (43221400814656949951881277786951214758909062576779005217793849373300613910542, 74871914229671147031970269069847144418734589524165582305917048541947138252141)
+
+UPLOAD_FOLDER = './media/text-files/'
+UPLOAD_KEY = './media/public-keys/'
+ALLOWED_EXTENSIONS = set(['txt', 'jpeg', 'png', 'jpg', 'ppt', 'pdf', 'doc', 'docx', 'xls'])
+
+app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///latest.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+class User(db.Model):
+	""" Create user table"""
+	id = db.Column(db.Integer, primary_key=True)
+	username = db.Column(db.String(80), unique=True)
+	privatekey = db.Column(db.String(1000), unique=True)
+	publickey_x = db.Column(db.String(5000), unique=True)
+	publickey_y = db.Column(db.String(5000), unique=True)
+
+	def __init__(self, username, privatekey, publickey_x, publickey_y):
+		self.username = username
+		self.privatekey = privatekey
+		self.publickey_x = publickey_x
+		self.publickey_y = publickey_y
+
+
+def allowed_file(filename):
+	return '.' in filename and \
+		filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+'''
+-----------------------------------------------------------
+					PAGE REDIRECTS
+-----------------------------------------------------------
+'''
+def post_upload_redirect():
+	return render_template('post-upload.html')
+
+@app.route('/register')
+def call_page_register_user():
+	return render_template('register.html')
+@app.route('/login')
+def login():
+	sql = text('select * from user')
+	result = db.engine.execute(sql)
+	names = [row[1] for row in result]
+	return render_template('login.html')
+
+@app.route('/home')
+def back_home():
+	return render_template('home_dup.html')
+@app.route('/download')
+def download():
+	return render_template('download.html')
+
+@app.route('/')
+def index():
+	return render_template('index.html')
+
+@app.route('/main')
+def index_after_login():
+	return render_template('home_dup.html')
+
+@app.route('/upload-file')
+def call_page_upload():
+	return render_template('upload.html')
+
+@app.route('/public-keys')
+def open_public_keys():
+	return render_template('public-key-list.html')
+
+@app.route('/private-keys')
+def open_private_keys():
+	return render_template('privatekey.html')
+
+
+'''----------------------------------------------------
+DOWNLOAD KEY-FILE
+----------------------------------------------
+'''	
+@app.route('/public-key-directory/retrieve/key/<username>')
+def download_public_key(username):
+	for root,dirs,files in os.walk('./media/public-keys/'):
+		for file in files:
+			list = file.split('-')
+			if list[0] == username:
+				filename = UPLOAD_KEY+file
+				return send_file(filename, attachment_filename='publicKey.pem',as_attachment=True)
+
+@app.route('/file-directory/retrieve/file/<filename>')
+def download_file(filename):
+	filepath = UPLOAD_FOLDER+filename
+	if(os.path.isfile(filepath)):
+		return send_file(filepath, attachment_filename='fileMessage-thrainSecurity.txt',as_attachment=True)
+	else:
+		return render_template('file-list.html',msg='An issue encountered, our team is working on that')
+'''
+-----------------------------------------------------------
+		BUILD - DISPLAY FILE - KEY DIRECTORY
+-----------------------------------------------------------
+'''
+# Build public key directory
+@app.route('/public-key-directory/')
+def downloads_pk():
+	username = []
+	if(os.path.isfile("./media/database/database_1.pickle")):
+		pickleObj = open("./media/database/database_1.pickle","rb")
+		username = pickle.load(pickleObj)
+		pickleObj.close()
+	if len(username) == 0:
+		return render_template('public-key-list.html',msg='Aww snap! No public key found in the database')
+	else:
+		return render_template('public-key-list.html',msg='',itr = 0, length = len(username),directory=username)
+# Build file directory
+@app.route('/file-directory/')
+def download_f():
+	for root,dirs,files in os.walk(UPLOAD_FOLDER):
+		if(len(files) == 0):
+			return render_template('file-list.html',msg='Aww snap! No file found in directory')
+		else:
+			return render_template('file-list.html',msg='',itr=0,length=len(files),list=files)
+
+'''
+-----------------------------------------------------------
+				UPLOAD ENCRYPTED FILE
+-----------------------------------------------------------
+'''
+
+@app.route('/data', methods=['GET', 'POST'])
+def upload_file():
+	if request.method == 'POST':
+		# check if the post request has the file part
+		if 'file' not in request.files:
+			flash('No file part')
+			return redirect(request.url)
+		f = request.files['file']
+		# if user does not select file, browser also
+		# submit a empty part without filename
+		if f.filename == '':
+			flash('No selected file')
+			return 'NO FILE SELECTED'
+		if f:
+			filename = secure_filename(f.filename)
+			f.save(os.path.join(app.config['UPLOAD_FOLDER'], f.filename))
+			return post_upload_redirect()
+		return 'Invalid File Format !'
+
+'''
+-----------------------------------------------------------
+REGISTER UNIQUE USERNAME AND GENERATE PUBLIC KEY WITH FILE
+-----------------------------------------------------------
+'''
+
+@app.route('/register-new-user', methods = ['GET', 'POST'])
+def register_user():
+	global privatekey1
+	global pub_key
+	privatekey1 = DHECC.generate_private_key()
+	pub_key = DHECC.generate_public_key(privatekey1)
+	try:
+		if request.method == 'POST':
+			new_user = User(
+				username = request.form['username'],
+				privatekey = str(privatekey1),
+				publickey_x = str(pub_key[0]),
+				publickey_y = str(pub_key[1]))
+			db.session.add(new_user)
+			db.session.commit()
+			return render_template('privatekey.html', Key=privatekey1)
+	except:
+		return render_template('register.html', Sentence="Username aldready exists, try a different name!!!")
+	
+
+@app.route('/after-login', methods = ['POST'])
+def after_login():
+	if request.method == 'POST':
+		name = request.form['username']	
+		#privatekey = request.form['privatekey']
+		try:
+			result = User.query.filter_by(username=name).first()
+			#print(list(result))
+			#print(tuple(DHECC.generate_secret(int(privatekey), my_public)))
+			#print(tuple(DHECC.generate_secret(my_private, (int(result1),int(result2)))))
+			if result is not None:
+				session['logged_in'] = True
+				return redirect(url_for('main'))
+			else:
+				return render_template('register.html', Sentence="Please Register first")
+		except:
+			return render_template('register.html',Sentence="Please Register first")
+		return name
+		
+
+@app.route("/logout")
+def logout():
+	"""Logout Form"""
+	session['logged_in'] = False
+	return redirect(url_for('home'))
+if __name__ == '__main__':
+	#app.run(host="0.0.0.0", port=80)
+	app.debug = True
+	db.create_all()
+	app.run()
