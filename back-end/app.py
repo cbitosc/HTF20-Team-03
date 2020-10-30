@@ -54,7 +54,11 @@ def register_user():
 		if request.method == 'POST':
 			new_user = User(
 				username = request.form['username'],
-				password = encrypt(request.form['password']))
+				password = encrypt(request.form['password'],
+				language = request.form['language'],
+				subject = request.form['subject'],
+				location = request.form['location'],
+				))
 			db.session.add(new_user)
 			db.session.commit()
 			session['logged_in'] = True
