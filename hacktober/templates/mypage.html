@@ -1,25 +1,54 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>The Casket</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+		integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+		<title>Nick Watson</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" >
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" >
+	<!--	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" > -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 	</head>
+	<style>
+			body{
+				background-image: linear-gradient(to right, #f1f76c, #c4c774);
+			}
+			#main{
+				background-color: #FFF;
+				border-radius: 15px;
+			}
+			img{
+				border-radius: 15px;
+			}
+			h1{
+				color: #343a40;
+				font-weight: 500;
+			}
+			.side{
+				font-weight: bold;
+				color: #343a40;
+			}
+			p{
+				font-weight: 200;
+			}
+	</style>
 	<body>
 
 		<!-- Header -->
-			<header id="header">
+			<!--<header id="header">
 				<div class="inner">
 					<a href="index.html" class="logo">
 					<nav id="nav">
-						<a href="/main">Home</a>						
+						<a href="/main">Home</a>
 					</nav>
 					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 				</div>
 			</header>
 
-		<!-- Banner -->
+		<!-- Banner --><!--
 			<section id="banner" style="background-image: url({{ url_for('static', filename='images/bg.jpg') }});">
 				<div class="inner">
 					<header>
@@ -31,12 +60,35 @@
 						<b><a href="/register" class="button"  style="background-color:black;">Get Started</a></b>
 					</footer>
 				</div>
-			</section>
+			</section>-->
+			<!-- stuff here: name, language, location, subjects, students-enrolled qualifications, teaching experience-->
+			<div class="container" style="padding: 3%;">
+				<div id="main">
+				<div class="row" style="padding: 3%;">
+					<div class="col-lg-6 col-md-6 border-right col-sm-12"  style="padding: 3%;">
+						<img src="https://th.bing.com/th/id/OIP.Po9dhsPThMg_D2j5q-PPFAHaFE?w=261&h=180&c=7&o=5&pid=1.7" class="img-responsive">
+					</div>
+				<div class="col-lg-6 col-md-6 col-sm-12" style="padding-left: 2%; padding:3%;">
+				<div class="container" style="padding: 3%">
+				<h1>Nick Watson</h1>
+				<p><span class="side">Email:</span> nickwatson@example.com</p>
+				<p><span class="side">Mobile:</span> +91-1234567890</p>
+			</div>
+			<div class="container" style="padding: 3%">
+				<p><span class="side">Language:</span> English</p>
+				<p><span class="side">Subjects:</span> Python, C++</p>
+				<p><span class="side">Location:</span> Kondapur</p>
+				<p><span class="side">Qualifications:</span> MTech in Information Technology</p>
+				<p><span class="side">Teaching Experience:</span> 5 years</p>
+				<p><span class="side">Students Enrolled:</span> 195 </p>
+			</div>
+		</div>
+			</div>
+		</div>
+	</div>
 
 
 
-	
-			
 			<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 			<script src="{{ url_for('static', filename='js/skel.min.js') }}"></script>
 			<script src="{{ url_for('static', filename='js/util.js') }}"></script>
