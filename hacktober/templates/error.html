@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>The Casket</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" >
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" >
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<a href="index.html" class="logo">
+					<nav id="nav">
+						<a href="/register">Register/Login</a>						
+					</nav>
+					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+				</div>
+			</header>
+
+		<!-- Banner -->
+			<section id="banner" style="background-image: url({{ url_for('static', filename='images/bg.jpg') }});">
+				<div class="inner">
+					<header>
+						<h1>OOPS!An error has occured!</h1>
+					</header>
+                </div>
+                <br><br><br><br>
+			</section>
+
+
+
+		<!-- Footer -->
+			
+			
+			<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/skel.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/util.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+	</body>
+</html>
