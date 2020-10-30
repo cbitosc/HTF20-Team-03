@@ -13,7 +13,7 @@
 
 	body {
 		font-family: Arial, Helvetica, sans-serif;
-		background-color: #F1F76C;
+		background-color:  #e3f2fd;
 	}
 
 	.column {
@@ -79,150 +79,175 @@
 </style>
 
 <body>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#">Find A Tutor</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">My page</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
 	<section class="tutor-cards">
-		<div class="row">
-            <div class="col-md-3">
-                <div class="dropdown">
-                    Name of Tutor:<br>
-                    <select name="Name" class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <option value="u1" class="dropdown-item" SELECTED>u1</option>
-                        <option value="Social" class="dropdown-item" SELECTED>u2</option>
-                        <option value="Science" class="dropdown-item" SELECTED>u3</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="dropdown">
-                    Language:<br>
-                <select name="languages" class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <option value="English" class="dropdown-item" SELECTED>English
-                    </option>
-                    <option value="Telugu" class="dropdown-item" SELECTED>Telugu
-                    </option>
-                    <option value="Hindi" class="dropdown-item" SELECTED>Hindi</option>
-                </select>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="dropdown">
-                    Subject:<br>
-                    <select name="Subjects" class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="dropdown">
+                        Name of Tutor:<br>
+                        <select name="Name" class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <option value="Maths" class="dropdown-item" SELECTED>Maths</option>
-                        <option value="Social" class="dropdown-item" SELECTED>Social
-                        </option>
-                        <option value="Science" class="dropdown-item" SELECTED>Science
-                        </option>
-                    </select>
+                            <option value="u1" class="dropdown-item" SELECTED>u1</option>
+                            <option value="Social" class="dropdown-item" SELECTED>u2</option>
+                            <option value="Science" class="dropdown-item" SELECTED>u3</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="dropdown">
-                    Location:<br>
-                    <select name="Location" class="btn btn-danger dropdown-toggle" id="dropdownMenuButton"
+                <div class="col-md-3">
+                    <div class="dropdown">
+                        Language:<br>
+                    <select name="languages" class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <option value="l1" class="dropdown-item" SELECTED>L-1</option>
-                        <option value="l2" class="dropdown-item" SELECTED>L-2</option>
-                        <option value="l3" class="dropdown-item" SELECTED>L - 3</option>
+                        <option value="English" class="dropdown-item" SELECTED>English
+                        </option>
+                        <option value="Telugu" class="dropdown-item" SELECTED>Telugu
+                        </option>
+                        <option value="Hindi" class="dropdown-item" SELECTED>Hindi</option>
                     </select>
+                    </div>
+                </div>
+    
+                <div class="col-md-3">
+                    <div class="dropdown">
+                        Subject:<br>
+                        <select name="Subjects" class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <option value="Maths" class="dropdown-item" SELECTED>Maths</option>
+                            <option value="Social" class="dropdown-item" SELECTED>Social
+                            </option>
+                            <option value="Science" class="dropdown-item" SELECTED>Science
+                            </option>
+                        </select>
+                    </div>
+                </div>
+    
+                <div class="col-md-3">
+                    <div class="dropdown">
+                        Location:<br>
+                        <select name="Location" class="btn btn-danger dropdown-toggle" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <option value="l1" class="dropdown-item" SELECTED>L-1</option>
+                            <option value="l2" class="dropdown-item" SELECTED>L-2</option>
+                            <option value="l3" class="dropdown-item" SELECTED>L - 3</option>
+                        </select>
+                    </div>
+                </div>
+                
+            </div>         
+            <div class="row">
+                <div class="column">
+                    <div class="card">
+                        <img src="1.jpg" style="width:150px;height:auto;padding-top:10px">
+                        <h1>Json watson</h1>
+                        <p class="title">CEO & Founder</p>
+                        <p>Oxford university</p>
+    
+                        <p><button>Contact</button></p>
+                    </div>
+                </div>
+    
+                <div class="column">
+                    <div class="card">
+                        <img src="3.jpg" style="width:150px;height:auto;padding-top:10px">
+                        <h1>Jon watson</h1>
+                        <p class="title">CEO & Founder</p>
+                        <p>Oxford university</p>
+    
+                        <p><button>Contact</button></p>
+                    </div>
+                </div>
+    
+                <div class="column">
+                    <div class="card">
+                        <img src="2.png" style="width:150px;height:auto;padding-top:10px">
+                        <h1>Nick watson</h1>
+                        <p class="title">CEO & Founder</p>
+                        <p>Oxford university</p>
+    
+                        <p><button>Contact</button></p>
+                    </div>
+                </div>
+    
+                <div class="column">
+                    <div class="card">
+                        <img src="4.png" style="width:150px;height:auto;padding-top:10px">
+                        <h1>Joy watson</h1>
+                        <p class="title">CEO & Founder</p>
+                        <p>Oxford university</p>
+    
+                        <p><button>Contact</button></p>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <div class="card">
+                        <img src="1.jpg" style="width:150px;height:auto;padding-top:10px">
+                        <h1>Json watson</h1>
+                        <p class="title">CEO & Founder</p>
+                        <p>Oxford university</p>
+    
+                        <p><button>Contact</button></p>
+                    </div>
+                </div>
+    
+                <div class="column">
+                    <div class="card">
+                        <img src="3.jpg" style="width:150px;height:auto;padding-top:10px">
+                        <h1>Jon watson</h1>
+                        <p class="title">CEO & Founder</p>
+                        <p>Oxford university</p>
+    
+                        <p><button>Contact</button></p>
+                    </div>
+                </div>
+    
+                <div class="column">
+                    <div class="card">
+                        <img src="2.png" style="width:150px;height:auto;padding-top:10px">
+                        <h1>Nick watson</h1>
+                        <p class="title">CEO & Founder</p>
+                        <p>Oxford university</p>
+    
+                        <p><button>Contact</button></p>
+                    </div>
+                </div>
+    
+                <div class="column">
+                    <div class="card">
+                        <img src="4.png" style="width:150px;height:auto;padding-top:10px">
+                        <h1>Joy watson</h1>
+                        <p class="title">CEO & Founder</p>
+                        <p>Oxford university</p>
+    
+                        <p><button>Contact</button></p>
+                    </div>
                 </div>
             </div>
+        </div>
 
-		</div>
-		<div class="row">
-			<div class="column">
-				<div class="card">
-					<img src="1.jpg" style="width:150px;height:auto;padding-top:10px">
-					<h1>Json watson</h1>
-					<p class="title">CEO & Founder</p>
-					<p>Oxford university</p>
-
-					<p><button>Contact</button></p>
-				</div>
-			</div>
-
-			<div class="column">
-				<div class="card">
-					<img src="3.jpg" style="width:150px;height:auto;padding-top:10px">
-					<h1>Jon watson</h1>
-					<p class="title">CEO & Founder</p>
-					<p>Oxford university</p>
-
-					<p><button>Contact</button></p>
-				</div>
-			</div>
-
-			<div class="column">
-				<div class="card">
-					<img src="2.png" style="width:150px;height:auto;padding-top:10px">
-					<h1>Nick watson</h1>
-					<p class="title">CEO & Founder</p>
-					<p>Oxford university</p>
-
-					<p><button>Contact</button></p>
-				</div>
-			</div>
-
-			<div class="column">
-				<div class="card">
-					<img src="4.png" style="width:150px;height:auto;padding-top:10px">
-					<h1>Joy watson</h1>
-					<p class="title">CEO & Founder</p>
-					<p>Oxford university</p>
-
-					<p><button>Contact</button></p>
-				</div>
-            </div>
-            
-            <div class="column">
-				<div class="card">
-					<img src="1.jpg" style="width:150px;height:auto;padding-top:10px">
-					<h1>Json watson</h1>
-					<p class="title">CEO & Founder</p>
-					<p>Oxford university</p>
-
-					<p><button>Contact</button></p>
-				</div>
-			</div>
-
-			<div class="column">
-				<div class="card">
-					<img src="3.jpg" style="width:150px;height:auto;padding-top:10px">
-					<h1>Jon watson</h1>
-					<p class="title">CEO & Founder</p>
-					<p>Oxford university</p>
-
-					<p><button>Contact</button></p>
-				</div>
-			</div>
-
-			<div class="column">
-				<div class="card">
-					<img src="2.png" style="width:150px;height:auto;padding-top:10px">
-					<h1>Nick watson</h1>
-					<p class="title">CEO & Founder</p>
-					<p>Oxford university</p>
-
-					<p><button>Contact</button></p>
-				</div>
-			</div>
-
-			<div class="column">
-				<div class="card">
-					<img src="4.png" style="width:150px;height:auto;padding-top:10px">
-					<h1>Joy watson</h1>
-					<p class="title">CEO & Founder</p>
-					<p>Oxford university</p>
-
-					<p><button>Contact</button></p>
-				</div>
-			</div>
-		</div>
-	</section>
+    </section>
+    <footer style="background-color: #fff; text-align: center;">
+        <p>Made by Team-3</p>
+    </footer>
 
 </body>
 
