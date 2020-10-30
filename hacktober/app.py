@@ -7,7 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import text
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///new_details.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user_details.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -54,9 +54,7 @@ def mypage():
 
 @app.route('/main')
 def index_after_login():
-	if not session.get('logged_in'):
-		return render_template('index.html')
-	return render_template('home_dup.html',Name = session['username'])
+	return render_template('home_dup.html')
 
 @app.route('/register-new-user', methods = ['GET', 'POST'])
 def register_user():
@@ -64,11 +62,11 @@ def register_user():
 		if request.method == 'POST':
 			new_user = User(
 				username = request.form['username'],
-				password = encrypt(request.form['password']),
+				password = encrypt(request.form['password'],
 				language = request.form['language'],
 				subject = request.form['subject'],
 				location = request.form['location'],
-				)
+				))
 			db.session.add(new_user)
 			db.session.commit()
 			session['logged_in'] = True
