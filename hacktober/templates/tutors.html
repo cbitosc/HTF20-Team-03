@@ -1,46 +1,84 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>The Casket</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" >
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" >
-	</head>
-	<body>
+<head>
+	<title>The Casket- login</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" >
+</head>
+<body>
 
-		<!-- Header -->
-			<header id="header">
-				<div class="inner">
-					<a href="index.html" class="logo">
-					<nav id="nav">
-						<a href="/main">Home</a>						
-					</nav>
-					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+	<header id="header">
+		<div class="inner">
+			<a href="index.html" class="logo">
+			<nav id="nav">
+				<a href="/main">Home</a>
+				
+			</nav>
+			<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+		</div>
+	</header>
+<section id="banner" style="background-image: url({{ url_for('static', filename='images/bg.jpg') }})">
+		
+		<div class="inner">
+			<form action = "/after-login" enctype="multipart/form-data" method = "POST">
+				<div class="login">
+				<div class="login-screen">
+				<div class="app-title">
+				<h1>Login</h1>
 				</div>
-			</header>
+				<div class="login-form">
+				<div class="control-group">
+                    <div class="dropdown" style="background-color: antiquewhite;">
+                        Name<br>
+                        <select name="Name" style ="background-color:grey;">
+                            <option value="u1" class="dropdown-item" SELECTED>u1</option>
+                            <option value="Social" class="dropdown-item" SELECTED>u2</option>
+                            <option value="Science" class="dropdown-item" SELECTED>u3</option>
+                        </select>
+                    </div>
+                    <div class="dropdown">
+                        <select name="languages" class="btn btn-info dropdown-toggle" type="button"
+                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <option value="English" class="dropdown-item" SELECTED>English</option>
+                            <option value="Telugu" class="dropdown-item" SELECTED>Telugu</option>
+                            <option value="Hindi" class="dropdown-item" SELECTED>Hindi</option>
+                        </select>
+                    </div>
+                    <div class="dropdown">
+                        <select name="Subjects" class="btn btn-info dropdown-toggle" type="button"
+                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <option value="Maths" class="dropdown-item" SELECTED>Maths</option>
+                            <option value="Social" class="dropdown-item" SELECTED>Social</option>
+                            <option value="Science" class="dropdown-item" SELECTED>Science</option>
+                        </select>
+                    </div>
+                    <div class="dropdown">
+                        <select name="Location" class="btn btn-info dropdown-toggle" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <option value="l1" class="dropdown-item" SELECTED>L-1</option>
+                            <option value="l2" class="dropdown-item" SELECTED>L-2</option>
+                            <option value="l3" class="dropdown-item" SELECTED>L - 3</option>
+                        </select>
+                    </div>
+                </div>
+				
+				
+				<input type="submit" value="login" class="btn btn-primary btn-large btn-block">
+				
 
-		<!-- Banner -->
-			<section id="banner" style="background-image: url({{ url_for('static', filename='images/bg.jpg') }});">
-				<div class="inner">
-					<header>
-						<h1>Welcome !!</h1>
-					</header>
-
-					<h3 style="color:white;">Here in The Casket, we let you store files in a secure way.</h3>
-					<footer>
-						<b><a href="/register" class="button"  style="background-color:black;">Get Started</a></b>
-					</footer>
+				
 				</div>
-			</section>
+				</div>
+				</div>
+				</form>
 
-
-
+		</div>
 	
-			
-			<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-			<script src="{{ url_for('static', filename='js/skel.min.js') }}"></script>
-			<script src="{{ url_for('static', filename='js/util.js') }}"></script>
-			<script src="{{ url_for('static', filename='js/main.js') }}"></script>
-
-	</body>
+</section>
+&#123;% endif %&#125;
+&#123;% endblock %&#125;
+&#123;% endraw %&#125;
+</body>
 </html>
+
