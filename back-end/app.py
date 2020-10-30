@@ -16,10 +16,16 @@ class User(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(80), unique=True)
 	password = db.Column(db.String(5000), unique=False)
+	language = db.Column(db.String(100), unique=False)
+	subject = db.Column(db.String(100), unique=False)
+	location = db.Column(db.String(100), unique=False)
 
-	def __init__(self, username, password):
+	def __init__(self, username, password, language, subject, location):
 		self.username = username
 		self.password = password
+		self.language = language
+		self.subject = subject
+		self.location = location
 
 @app.route('/register')
 def call_page_register_user():
@@ -48,7 +54,11 @@ def register_user():
 		if request.method == 'POST':
 			new_user = User(
 				username = request.form['username'],
-				password = encrypt(request.form['password']))
+				password = encrypt(request.form['password'],
+				language = request.form['language'],
+				subject = request.form['subject'],
+				location = request.form['location'],
+				))
 			db.session.add(new_user)
 			db.session.commit()
 			session['logged_in'] = True
@@ -73,9 +83,7 @@ def after_login():
                 return render_template('login.html', Sentence="Wrong password")
             return render_template('register.html', Sentence="Please Register First")
     except:
-        return render_template('register.html',Sentence="Oops!! Give us a moment!!")
-		
-
+        return render_template('register.html',Sentence="Oops!! Give us a moment!!")	
 
 @app.route("/logout")
 def logout():
