@@ -543,14 +543,10 @@ ul.slick-dots {
 	margin-top: 12px;
 	float: right;
 }
-
-
-
-
 /* Services */
 
 .services {
-	margin-top: 140px;
+	margin-top: 40px;
 }
 
 .service-item img {
@@ -1336,4 +1332,10 @@ footer .contact-form button.filled-button:hover {
 		color: #a4c639!important;
 		border-bottom: none!important;
 	}
+}
+
+/* Custom Style */
+
+.ddmenu {
+	margin: 5px;
 }
