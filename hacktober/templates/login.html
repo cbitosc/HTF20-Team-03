@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Casket- login</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" >
+</head>
+<body>
+
+	<header id="header">
+		<div class="inner">
+			<a href="index.html" class="logo">
+			<nav id="nav">
+				<a href="/main">Home</a>
+				
+			</nav>
+			<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+		</div>
+	</header>
+<section id="banner" style="background-image: url({{ url_for('static', filename='images/bg.jpg') }})">
+		
+		<div class="inner">
+			<form action = "/after-login" enctype="multipart/form-data" method = "POST">
+				<div class="login">
+				<div class="login-screen">
+				<div class="app-title">
+				<h1>Login</h1>
+				</div>
+				<div class="login-form">
+				<div class="control-group">
+								<input type="text" class="login-field" value=""  placeholder="username" name="username" size="5">
+				<label class="login-field-icon fui-user" for="login-name"></label></div>
+				
+				<div class="control-group">
+					<input type="password" class="login-field" value=""  placeholder="privatekey" name="privatekey" size="5">
+	<label class="login-field-icon fui-user" for="login-name"></label></div>
+				<input type="submit" value="login" class="btn btn-primary btn-large btn-block">
+				<a href="/register" class="text" style="background-color: gray;">New User? Click here</a>
+
+				
+				</div>
+				</div>
+				</div>
+				</form>
+
+		</div>
+	
+</section>
+&#123;% endif %&#125;
+&#123;% endblock %&#125;
+&#123;% endraw %&#125;
+</body>
+</html>
