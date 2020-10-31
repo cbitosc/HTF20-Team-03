@@ -20,6 +20,7 @@
 
 	body {
 		line-height: 1;
+		
 	}
 
 	ol, ul {
@@ -2921,7 +2922,7 @@
 
 		#banner:before {
 			content: '';
-			background: rgba(75, 75, 93, 0.85);
+			/* background: rgba(75, 75, 93, 0.85); */
 			position: absolute;
 			width: 100%;
 			height: 100%;
@@ -2930,7 +2931,7 @@
 		}
 
 		#banner .inner {
-			border-top: 2px solid rgba(255, 255, 255, 0.2);
+			/* border-top: 2px solid rgba(255, 255, 255, 0.2); */
 			position: relative;
 			z-index: 10005;
 			padding-top: 8em;
@@ -2960,7 +2961,7 @@
 
 		#banner p {
 			font-size: 1em;
-			color: rgba(255, 255, 255, 0.55);
+			color: white;
 			margin-bottom: 1.75em;
 		}
 
@@ -2975,7 +2976,7 @@
 		}
 
 			#banner .flex div {
-				border-right: 2px solid rgba(255, 255, 255, 0.2);
+				/* border-right: 2px solid rgba(255, 255, 255, 0.2); */
 				padding: 0 8em;
 			}
 

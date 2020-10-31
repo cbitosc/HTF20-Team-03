@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+<style>
+	* {
+		box-sizing: border-box;
+	}
+
+	body {
+		font-family: Arial, Helvetica, sans-serif;
+		background-color:  #e3f2fd;
+	}
+
+	.column {
+		width: 25%;
+		float: left;
+		padding: 50px 10px;
+	}
+
+	.row:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+
+
+
+	@media screen and (max-width:600px) {
+		.column {
+			width: 100%;
+			display: block;
+			margin-bottom: 20px;
+		}
+	}
+
+	.card {
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+		max-width: 1000px;
+		margin: auto;
+		background-color: white;
+		text-align: center;
+		border-radius: 40px;
+		padding-bottom: 15px;
+	}
+
+	.title {
+		color: gray;
+		font-size: 18px;
+	}
+
+	button {
+		border: none;
+		padding: 8px;
+		display: inline-block;
+		color: white;
+		background-color: black;
+		cursor: pointer;
+		width: 70%;
+		border-radius: 20px;
+		font-size: 18px;
+		text-align: center;
+	}
+
+	a {
+		text-decoration: none;
+		font-size: 22px;
+		color: black;
+	}
+
+	a:hover,
+	button:hover {
+		opacity: 0.6;
+	}
+</style>
+
+<body>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#">Find A Tutor</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">My page</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+	<section class="tutor-cards">
+        <div class="container-fluid">
+            <div class="row">
+				<form action = "/search-tutor" enctype="multipart/form-data" method = "POST">
+					<div class="control-group col">
+						<input type="text" class="login-field form-control" value=""  placeholder="Name of the tutor" name="Name" size="5" >
+						<label class="login-field-icon fui-user" for="login-name"></label>
+						<input type="submit" value="Go" class="btn btn-default">
+					</div>
+				</form>
+				<form action = "/search-subject" enctype="multipart/form-data" method = "POST">
+                    <div class="control-group col">
+						<input type="text" class="login-field form-control" value=""  placeholder="Subject" name="Subjects" size="5" >
+                        <label class="login-field-icon fui-user" for="login-name"></label>
+                        <input type="submit" value="Go" class="btn btn-default">
+					</div>
+				</form>
+				<form action = "/search-language" enctype="multipart/form-data" method = "POST">
+					<div class="control-group col">
+							<input type="text" class="login-field form-control" value=""  placeholder="Language" name="languages" size="5" >
+							<label class="login-field-icon fui-user" for="login-name"></label>
+                            <input type="submit" value="Go" class="btn btn-default">
+                    </div>
+				</form>
+				<form action = "/search-location" enctype="multipart/form-data" method = "POST">
+					<div class="control-group col">
+						<input type="text" class="login-field form-control" value=""  placeholder="Location" name="Location" size="5" >
+                        <label class="login-field-icon fui-user" for="login-name"></label>
+                        <input type="submit" value="Go" class="btn btn-default">
+					</div>
+				</form>
+				</div>
+				
+				   
+            </div>     
+            <div class="1">
+                    <div class="card"> 
+                        {% for i in name %}
+                        <img src="{{ url_for('static', filename='images/avatar.jpeg') }}" style="width:150px;height:auto;border-radius: 20%;">
+                        <p style="font-size: 25px;">Name:{{i[0]}}</p>
+                        <p style="font-size: 25px;">Language:{{i[3]}}</p>
+                        <p style="font-size: 25px;">Location:{{i[1]}}</p>
+                        <p style="font-size: 25px;">Subject:{{i[2]}}</p>
+                        <p style="font-size: 25px;">Phone number:{{i[4]}}</p>
+                        <p style="font-size: 25px;">e-mail:{{i[5]}}</p>
+
+                    
+                        {% endfor %}
+                        
+                    
+                    </div>    
+            </div>
+        
+        </div>
+
+    </section>
+    <footer style="background-color: #fff; text-align: center;">
+        <p>Made by Team-3</p>
+    </footer>
+
+</body>
+
+</html>

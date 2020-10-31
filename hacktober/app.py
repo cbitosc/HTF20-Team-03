@@ -6,8 +6,10 @@ from sqlalchemy.orm import scoped_session,sessionmaker
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import text
 
+
+
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user_details.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///latest.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -19,13 +21,17 @@ class User(db.Model):
 	language = db.Column(db.String(100), unique=False)
 	subject = db.Column(db.String(100), unique=False)
 	location = db.Column(db.String(100), unique=False)
+	email = db.Column(db.String(100), unique=True)
+	pno = db.Column(db.String(100), unique=True)
 
-	def __init__(self, username, password, language, subject, location):
+	def __init__(self, username, password, language, subject, location, email, pno):
 		self.username = username
 		self.password = password
 		self.language = language
 		self.subject = subject
 		self.location = location
+		self.email = email
+		self.pno = pno
 
 @app.route('/register')
 def call_page_register_user():
@@ -54,7 +60,9 @@ def mypage():
 
 @app.route('/main')
 def index_after_login():
-	return render_template('home_dup.html')
+	if not session.get('logged_in'):
+		return render_template('index.html')
+	return render_template('home_dup.html',Name = session['username'])
 
 @app.route('/register-new-user', methods = ['GET', 'POST'])
 def register_user():
@@ -62,11 +70,13 @@ def register_user():
 		if request.method == 'POST':
 			new_user = User(
 				username = request.form['username'],
-				password = encrypt(request.form['password'],
+				password = encrypt(request.form['password']),
 				language = request.form['language'],
 				subject = request.form['subject'],
 				location = request.form['location'],
-				))
+				email = request.form['email'],
+				pno = request.form['pno']
+				)
 			db.session.add(new_user)
 			db.session.commit()
 			session['logged_in'] = True
@@ -92,6 +102,84 @@ def after_login():
             return render_template('register.html', Sentence="Please Register First")
     except:
         return render_template('register.html',Sentence="Oops!! Give us a moment!!")	
+
+'''@app.route('/after-search', methods = ['POST'])
+def after_search():
+		if request.method == 'POST':
+			name = request.form['Name']	
+			languages = request.form['languages']
+			subject = request.form['Subjects']
+			location = request.form['Location']	
+			result = User.query.filter_by(location=location).all()
+			print(result)
+			l = []
+			for i in result:
+				l.append(i.username)
+			return render_template('dummy.html', item=result)'''
+			#return render_template('dummy.html')
+
+@app.route('/search-tutor', methods = ['POST'])
+def search_tutor():
+	try:
+		if request.method == 'POST':
+			name = request.form['Name']		
+			result = User.query.filter_by(username=name).all()
+			print(type(result))
+			un = []
+			loc = []
+			sub = []
+			lang = []
+			d = dict()
+			for index, i in enumerate(result):
+				d[index] = [i.username] + [i.location] + [i.subject] + [i.language] + [i.email] + [i.pno]
+			print(d)
+			return render_template('dummy.html', name=d.values())
+	except:
+			return render_template("error.html")
+
+@app.route('/search-subject', methods = ['POST'])
+def search_sub():
+	try:
+		if request.method == 'POST':
+			subject = request.form['Subjects']	
+			result = User.query.filter_by(subject=subject).all()
+			print(result)
+			d = dict()
+			for index, i in enumerate(result):
+				d[index] = [i.username] + [i.location] + [i.subject] + [i.language] + [i.email] + [i.pno]
+			return render_template('dummy.html', name=d.values())
+	except:
+			return render_template("error.html")
+@app.route('/search-location', methods = ['POST'])
+def search_loc():
+	try:
+		if request.method == 'POST':
+			location = request.form['Location']	
+			result = User.query.filter_by(location= location).all()
+			print(result)
+			d = dict()
+			for index, i in enumerate(result):
+				d[index] = [i.username] + [i.location] + [i.subject] + [i.language] + [i.email] + [i.pno]
+			print(d)
+			return render_template('dummy.html', name=d.values())
+	except:
+			return render_template("error.html")
+
+@app.route('/search-language', methods = ['POST'])
+def search_lang():
+	try:
+		if request.method == 'POST':
+			languages = request.form['languages']	
+			result = User.query.filter_by(language = languages).all()
+			print(result)
+			d = dict()
+			for index, i in enumerate(result):
+				d[index] = [i.username] + [i.location] + [i.subject] + [i.language] + [i.email] + [i.pno]
+			print(d)
+			return render_template('dummy.html', name=d.values())
+	except:
+		return render_template("error.html")
+	
 
 @app.route("/logout")
 def logout():
