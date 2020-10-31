@@ -83,7 +83,8 @@ def register_user():
 			session['username'] = request.form['username']
 			return render_template('home_dup.html')
 	except:
-		return render_template('register.html', Sentence="Username aldready exists, try a different name!!!")
+		return(render_template("register.html", Sentence="Credentials already exist"))
+
 
 @app.route('/after-login', methods = ['POST'])
 def after_login():

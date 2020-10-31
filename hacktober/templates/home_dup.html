@@ -1,47 +1,49 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>find a tutor</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" >
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" >
-	</head>
-	<body>
-		<!-- Header -->
-			<header id="header">
-				<div class="inner">
-					<a href="index.html" class="logo">
-					<nav id="nav">
-						<a href="/tutor">Tutors</a>
-						<a href="/mypage">My page</a>
-						<a href="/logout">logout</a>
 
+<head>
+	<meta charset="utf-8">
+	<meta name="viewreport" content="width=device-width, initial-scale=1.0">
+	<title>
+		Find a Tutor
+	</title>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+	<link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="static/css/index.css" />
+</head>
 
+<body>
+	<div class="container-fluid banner" style="background-image: url({{ url_for('static', filename='css/bg4.jpg') }});">
+		<div class="row">
+			<div class="col-md-12">
+				<nav class="navbar navbar-md">
+					<div class="navbar-brand">Find a Tutor</div>
+					<ul class="nav">
+						<li class="nav-item">
+							<a class="nav-link" href="/">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/tutor">Tutors</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/mypage">My Profile</a>
+						</li>
 						
-					</nav>
-					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-				</div>
-			</header>
+						<li class="nav-item">
+							<a class="nav-link" href="/logout">Logout</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div class="col-md-8 offset-md-2 info">
+				<h1 class="text-center">Find a Tutor</h1>
+				<p class="text-center" style="color: black;">
+					Lorem ipsum dolor sit amet, consectetur adipisicing
+				</p>
+				<a href="#" class="btn btn-md text-center">Get Started</a>
+			</div>
+		</div>
+	</div>
+</body>
 
-		<!-- Banner -->
-			<section id="banner" style="background-image: url({{ url_for('static', filename='images/bg.jpg') }});">
-				<div class="inner">
-					<header>
-						<h1>Welcome to The Casket {{ Name }}!!</h1>
-					</header>
-
-					<h3 style="color:white;">Here in The Casket, we let you store files in a secure way.</h3>
-				</div>
-				<br><br><br><br><br>
-			</section>
-
-
-
-		<!-- Footer -->
-			
-			<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-			<script src="{{ url_for('static', filename='js/skel.min.js') }}"></script>
-			<script src="{{ url_for('static', filename='js/util.js') }}"></script>
-			<script src="{{ url_for('static', filename='js/main.js') }}"></script>
-	</body>
 </html>
