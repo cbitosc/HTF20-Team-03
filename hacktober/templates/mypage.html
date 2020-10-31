@@ -14,7 +14,7 @@
 	</head>
 	<style>
 			body{
-				background-image: linear-gradient(to right, #f1f76c, #c4c774);
+				background-image: linear-gradient(to bottom right, #78ebf4, #fff);
 			}
 			#main{
 				background-color: #FFF;
@@ -34,35 +34,28 @@
 			p{
 				font-weight: 200;
 			}
+			a{
+				color: #fff;
+			}
+			a:hover{
+				text-decoration: none;
+				font-weight: 700;
+				color: #FFF;
+			}
 	</style>
 	<body>
-
-		<!-- Header -->
-			<!--<header id="header">
-				<div class="inner">
-					<a href="index.html" class="logo">
-					<nav id="nav">
-						<a href="/main">Home</a>
-					</nav>
-					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-				</div>
-			</header>
-
-		<!-- Banner --><!--
-			<section id="banner" style="background-image: url({{ url_for('static', filename='images/bg.jpg') }});">
-				<div class="inner">
-					<header>
-						<h1>Welcome !!</h1>
-					</header>
-
-					<h3 style="color:white;">Here in The Casket, we let you store files in a secure way.</h3>
-					<footer>
-						<b><a href="/register" class="button"  style="background-color:black;">Get Started</a></b>
-					</footer>
-				</div>
-			</section>-->
-			<!-- stuff here: name, language, location, subjects, students-enrolled qualifications, teaching experience-->
-			<div class="container" style="padding: 3%;">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="navbar-brand">Tutor In Town</div>
+			<ul class="nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/main">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/logout">Logout</a>
+				</li>
+			</ul>
+		</nav>
+			<div class="container" style="padding: 3%; padding-bottom: 15%;">
 				<div id="main">
 				<div class="row" style="padding: 3%;">
 					<div class="col-lg-6 col-md-6 border-right col-sm-12"  style="padding: 3%;">
@@ -70,17 +63,14 @@
 					</div>
 				<div class="col-lg-6 col-md-6 col-sm-12" style="padding-left: 2%; padding:3%;">
 				<div class="container" style="padding: 3%">
-				<h1>Nick Watson</h1>
-				<p><span class="side">Email:</span> nickwatson@example.com</p>
-				<p><span class="side">Mobile:</span> +91-1234567890</p>
+				<h1>{{user}}</h1>
+				<p><span class="side">Email:</span> {{mail}}</p>
+				<p><span class="side">Mobile:</span> {{pno}}</p>
 			</div>
 			<div class="container" style="padding: 3%">
-				<p><span class="side">Language:</span> English</p>
-				<p><span class="side">Subjects:</span> Python, C++</p>
-				<p><span class="side">Location:</span> Kondapur</p>
-				<p><span class="side">Qualifications:</span> MTech in Information Technology</p>
-				<p><span class="side">Teaching Experience:</span> 5 years</p>
-				<p><span class="side">Students Enrolled:</span> 195 </p>
+				<p><span class="side">Language:</span> {{lang}}</p>
+				<p><span class="side">Subjects:</span> {{sub}}</p>
+				<p><span class="side">Location:</span> {{loc}}</p>
 			</div>
 		</div>
 			</div>
@@ -89,10 +79,10 @@
 
 
 
-			<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+			<!--<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 			<script src="{{ url_for('static', filename='js/skel.min.js') }}"></script>
 			<script src="{{ url_for('static', filename='js/util.js') }}"></script>
-			<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/main.js') }}"></script>-->
 
 	</body>
 </html>
